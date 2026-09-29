@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ClassSync – Class Notice Board</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1 class="logo">Class<span>Sync</span></h1>
+      <button id="toggleFormBtn" class="btn btn-light" aria-expanded="false" aria-controls="formPanel">+ New post</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Add announcement form (hidden until the button is tapped) -->
+    <section id="formPanel" class="panel form-panel" hidden>
+      <h2>Post to the class</h2>
+      <form id="postForm">
+        <label for="title">Title</label>
+        <input id="title" type="text" maxlength="80" placeholder="e.g. Maths worksheet 5" required>
+
+        <label for="details">Details</label>
+        <textarea id="details" rows="3" maxlength="300" placeholder="What do students need to know?" required></textarea>
+
+        <div class="row">
+          <div>
+            <label for="type">Type</label>
+            <select id="type">
+              <option value="announcement">Announcement</option>
+              <option value="homework">Homework</option>
+              <option value="test">Test</option>
+              <option value="revision">Revision topic</option>
+            </select>
+          </div>
+          <div>
+            <label for="subject">Subject</label>
+            <input id="subject" type="text" maxlength="30" placeholder="e.g. Science" required>
+          </div>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="priority">Priority</label>
+            <select id="priority">
+              <option value="high">High</option>
+              <option value="medium" selected>Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+          <div>
+            <label for="date">Due / test date <small>(optional)</small></label>
+            <input id="date" type="date">
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Post</button>
+          <button type="button" id="cancelBtn" class="btn btn-ghost">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Summary numbers -->
+    <section class="stats" aria-label="Summary">
+      <div class="stat"><strong id="statAll">0</strong><span>Posts</span></div>
+      <div class="stat"><strong id="statTests">0</strong><span>Upcoming tests</span></div>
+      <div class="stat"><strong id="statHw">0</strong><span>Homework</span></div>
+    </section>
+
+    <!-- Search -->
+    <div class="search">
+      <label for="search" class="sr-only">Search announcements</label>
+      <input id="search" type="search" placeholder="Search announcements, subjects, topics…">
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard">
+      <section class="panel" id="announcementsPanel">
+        <h2>Latest announcements</h2>
+        <ul id="announcementList" class="list"></ul>
+      </section>
+
+      <section class="panel">
+        <h2>Upcoming tests</h2>
+        <ul id="testList" class="list"></ul>
+      </section>
+
+      <section class="panel">
+        <h2>Homework tasks</h2>
+        <ul id="homeworkList" class="list"></ul>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <p>Posts are saved in this browser only.</p>
+      <button id="resetBtn" class="link-btn">Reset to sample posts</button>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
